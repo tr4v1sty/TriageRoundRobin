@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class TaskGiver {
-
     public static ArrayList<HelpdeskTech> listOfTechs = new ArrayList<HelpdeskTech>();
     public static String [] listOfPeeps = {"Travis","Spencer","Blue","Ron","Chris","George",
             "Joey","Walters","Chace","Aryn","Thomas","Matt","Robert","Rick","Hughes","Brandon"};
@@ -18,13 +16,18 @@ public class TaskGiver {
             System.out.println("added " + i + " to the listOfTechs");
         }
     }
-
+    public static void removeNamesfromTechList(){
+        for (HelpdeskTech tech : Who.peopleToRemove){
+            System.out.println();
+            TaskGiver.listOfTechs.remove(tech);
+            System.out.println();
+            System.out.println("removed " + tech.getTechName());
+            System.out.println();
+        }
+    }
     //start the round robin sesh?
     public static void askUserGiveTasks(){
-        System.out.println();
-        System.out.println();
-        System.out.println("Would you like to start the task round robin? (y/n)");
-        System.out.println();
+        System.out.println("\n\nWould you like to start the task round robin? (y/n)\n");
         Scanner sc = new Scanner(System.in);
         String x = sc.nextLine();
         if (x.equals("y")){
@@ -38,7 +41,6 @@ public class TaskGiver {
             askUserGiveTasks();
         }
     }
-
     //loop through the list of techs, giving each tech a task
     public static void giveTasks() {
         for (HelpdeskTech tech : listOfTechs) {
@@ -57,9 +59,7 @@ public class TaskGiver {
         System.out.println("\nWould you like to go for another round of round robin?\n");
         askAnotherRound();
     }
-
-
-
+    //Ask to go for another round
     public static void askAnotherRound(){
         Scanner sc = new Scanner(System.in);
         String x = sc.nextLine();
@@ -74,19 +74,15 @@ public class TaskGiver {
             askAnotherRound();
         }
     }
-
-
     //display the tech's info in string form
     public static void displayTechInfo(){
         for (HelpdeskTech tech : listOfTechs){
             System.out.println(tech.hdTechToString());
-
         }
     }
 
     //I forget why I wrote this
-    public static void setListOfTechs(ArrayList<HelpdeskTech> listOfTechs) {
-        TaskGiver.listOfTechs = listOfTechs;
-    }
-
+//    public static void setListOfTechs(ArrayList<HelpdeskTech> listOfTechs) {
+//        TaskGiver.listOfTechs = listOfTechs;
+//    }
 }

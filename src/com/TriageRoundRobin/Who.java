@@ -27,10 +27,10 @@ public class Who {
             wouldYouLikeRemove();
         }
     }
+    public static ArrayList<HelpdeskTech> peopleToRemove = new ArrayList<HelpdeskTech>();
 
     //    Who would you like to remove
     public static void whoToRemove(){
-        ArrayList<HelpdeskTech> peopleToRemove = new ArrayList<HelpdeskTech>();
 
         System.out.println();
         System.out.println("Who would you like to remove?  (Type a name and press Enter)");
@@ -45,15 +45,7 @@ public class Who {
                 break;
             }
         }
-
-
-        for (HelpdeskTech tech : peopleToRemove){
-            System.out.println();
-            TaskGiver.listOfTechs.remove(tech);
-            System.out.println();
-            System.out.println("removed " + tech.getTechName());
-            System.out.println();
-        }
+        TaskGiver.removeNamesfromTechList();
     }
 
     public static void wouldYouLikeAdd(){
