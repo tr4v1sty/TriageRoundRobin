@@ -1,30 +1,9 @@
 package com.TriageRoundRobin;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TaskGiver {
-    public static ArrayList<HelpdeskTech> listOfTechs = new ArrayList<HelpdeskTech>();
-    public static String [] listOfPeeps = {"Travis","Spencer","Blue","Ron","Chris","George",
-            "Joey","Walters","Chace","Aryn","Thomas","Matt","Robert","Rick","Hughes","Brandon"};
-
-    //Add names to the list of techs
-    public static void addNamesToTechList(){
-        for(String i : listOfPeeps){
-            listOfTechs.add(new HelpdeskTech(i));
-            System.out.println("added " + i + " to the listOfTechs");
-        }
-    }
-    public static void removeNamesfromTechList(){
-        for (HelpdeskTech tech : Who.peopleToRemove){
-            System.out.println();
-            TaskGiver.listOfTechs.remove(tech);
-            System.out.println();
-            System.out.println("removed " + tech.getTechName());
-            System.out.println();
-        }
-    }
     //start the round robin sesh?
     public static void askUserGiveTasks(){
         System.out.println("\n\nWould you like to start the task round robin? (y/n)\n");
@@ -34,7 +13,7 @@ public class TaskGiver {
             TaskGiver.giveTasks();
         }
         else if (x.equals("n")){
-            TaskGiver.displayTechInfo();
+            ListOfTechs.displayListOfTechs();
         }
         else {
             System.out.println("\nPlease type 'y' or 'n' then press enter\n");
@@ -43,7 +22,7 @@ public class TaskGiver {
     }
     //loop through the list of techs, giving each tech a task
     public static void giveTasks() {
-        for (HelpdeskTech tech : listOfTechs) {
+        for (HelpdeskTech tech : ListOfTechs.listOfTechs) {
             System.out.println("\n\n**********STARTING ROUND ROBIN*******\n" +
                     "\nIncrementing counter for " + tech.getTechName());
             tech.increaseTasksGiven();
@@ -67,19 +46,15 @@ public class TaskGiver {
             giveTasks();
         }
         else if (x.equals("n")){
-            TaskGiver.displayTechInfo();
+            ListOfTechs.displayListOfTechs();
         }
         else {
             System.out.println("\nPlease type 'y' or 'n' then press enter\n");
             askAnotherRound();
         }
     }
-    //display the tech's info in string form
-    public static void displayTechInfo(){
-        for (HelpdeskTech tech : listOfTechs){
-            System.out.println(tech.hdTechToString());
-        }
-    }
+
+
 
     //I forget why I wrote this
 //    public static void setListOfTechs(ArrayList<HelpdeskTech> listOfTechs) {

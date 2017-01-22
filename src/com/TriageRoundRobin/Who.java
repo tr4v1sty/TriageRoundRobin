@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Who {
-
+    public static ArrayList<HelpdeskTech> peopleToRemove = new ArrayList<HelpdeskTech>();
 
     public static void wouldYouLikeRemove(){
-        System.out.println();
-        System.out.println("Remove anyone from the list? (y/n)");
-        System.out.println();
+        System.out.println("\n\n\nRemove anyone from the list? (y/n)\n");
+
         Scanner sc = new Scanner(System.in);
         String x = sc.nextLine();
 
@@ -21,37 +20,29 @@ public class Who {
             wouldYouLikeAdd();
         }
         else {
-            System.out.println();
-            System.out.println("Please type 'y' or 'n' then press enter");
-            System.out.println();
+            System.out.println("\nPlease type 'y' or 'n' then press enter\n");
             wouldYouLikeRemove();
         }
     }
-    public static ArrayList<HelpdeskTech> peopleToRemove = new ArrayList<HelpdeskTech>();
-
     //    Who would you like to remove
     public static void whoToRemove(){
-
-        System.out.println();
-        System.out.println("Who would you like to remove?  (Type a name and press Enter)");
-        System.out.println();
+        System.out.println("\nWho would you like to remove?  (Type a name and press Enter)\n");
 
         Scanner sc = new Scanner(System.in);
         String x = sc.nextLine();
 
-        for (HelpdeskTech hdt : TaskGiver.listOfTechs){
+        for (HelpdeskTech hdt : ListOfTechs.listOfTechs){
             if (hdt.getTechName().equals(x)){
                 peopleToRemove.add(hdt);
                 break;
             }
         }
-        TaskGiver.removeNamesfromTechList();
+        ListOfTechs.removeNamesfromTechList();
     }
 
     public static void wouldYouLikeAdd(){
-        System.out.println();
-        System.out.println("ADD anyone to the list? (y/n)");
-        System.out.println();
+        System.out.println("\nADD anyone to the list? (y/n)\n");
+
         Scanner sc = new Scanner(System.in);
         String x = sc.nextLine();
 
@@ -63,46 +54,33 @@ public class Who {
             TaskGiver.askUserGiveTasks();
         }
         else {
-            System.out.println();
-            System.out.println("Please type 'y' or 'n' then press enter");
-            System.out.println();
+            System.out.println("\nPlease type 'y' or 'n' then press enter\n");
             wouldYouLikeAdd();
         }
     }
 
     public static void whoToAdd(){
-        System.out.println();
-        System.out.println("Who would you like to ADD to the list?  (Type a name and press Enter)");
-        System.out.println();
-
         ArrayList<HelpdeskTech> peopleToAdd = new ArrayList<HelpdeskTech>();
+
+        System.out.println("\nWho would you like to ADD to the list?  (Type a name and press Enter)\n");
+
         Scanner sc = new Scanner(System.in);
         String x = sc.nextLine();
 
-
-        for (HelpdeskTech hdt : TaskGiver.listOfTechs){
+        for (HelpdeskTech hdt : ListOfTechs.listOfTechs){
             if (hdt.getTechName().equals(x)){
-                System.out.println();
-                System.out.println("The list already contains " + hdt.getTechName());
-                System.out.println();
+                System.out.println("\nThe list already contains " + hdt.getTechName() + "\n");
                 wouldYouLikeAdd();
             }
             else{
                 continue;
             }
         }
-
         peopleToAdd.add(new HelpdeskTech(x));
 
         for (HelpdeskTech tech : peopleToAdd){
-            TaskGiver.listOfTechs.add(new HelpdeskTech(tech.getTechName()));
-            System.out.println();
-            System.out.println("added " + tech.getTechName());
-            System.out.println();
+            ListOfTechs.listOfTechs.add(new HelpdeskTech(tech.getTechName()));
+            System.out.println("\nadded " + tech.getTechName() + "\n");
         }
-
-
     }
-
-
 }
